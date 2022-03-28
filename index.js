@@ -57,7 +57,7 @@ res.header("Access-Control-Allow-Headers: Content-Type, *");
 });
 
 app.use(cors({
-  //origin: "http://localhost:3002",
+  origin: "http://localhost:3001",
   methods: "GET, POST, PUT, DELETE",
   credentials:true
 }));

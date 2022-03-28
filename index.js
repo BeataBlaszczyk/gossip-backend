@@ -57,7 +57,7 @@ res.header("Access-Control-Allow-Headers: Content-Type, *");
 });
 
 app.use(cors({
-  origin: "http://localhost:3001",
+  origin: "https://gossip-frontend.vercel.app/",
   methods: "GET, POST, PUT, DELETE",
   credentials:true
 }));
@@ -72,7 +72,7 @@ app.use(
     saveUninitialized: false,
     cookie: {
       sameSite: "none",
-      domain: "http://localhost:3001/",
+      domain: "gossip-frontend.vercel.app/",
       secure: true, // true dla https,
       maxAge: 24*60*60*1000 //one day
     }

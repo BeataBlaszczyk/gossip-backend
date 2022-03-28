@@ -258,8 +258,8 @@ User.register({username:req.body.username}, req.body.password, function(err, use
 
 
 app.get("/login", passport.authenticate("local",{
-  successRedirect: "http://localhost:3002/secrets",
-  failureRedirect: "http://localhost:3002/"
+  successRedirect: "",
+  failureRedirect: "/"
 }))
 
 app.post("/login", function(req, res) {

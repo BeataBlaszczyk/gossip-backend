@@ -278,7 +278,7 @@ console.log(user)
 req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
-  return res.redirect("http://localhost:3002/secrets");
+  return res.redirect("/secrets");
 });
 
 })

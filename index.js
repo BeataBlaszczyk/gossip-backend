@@ -72,7 +72,7 @@ app.use(
     saveUninitialized: false,
     cookie: {
       sameSite: "none",
-      domain: "https://gossip-frontend.vercel.app/",
+      domain: "gossip-frontend.vercel.app",
       secure: true, // true dla https,
       maxAge: 24*60*60*1000 //one day
     }

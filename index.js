@@ -52,7 +52,7 @@ app.use(function (req, res, next) {
 });
 app.use(function(req, res, next) {
   res.header('Access-Control-Expose-Headers', ['Content-Range', 'Set-Cookie', 'X-Content-Range']);
-  //res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Origin', req.get('Origin'));
   res.header("Access-Control-Allow-Credentials: true");
 res.header("Access-Control-Allow-Methods: GET, POST");
@@ -65,6 +65,7 @@ app.use(cors({
   origin: "https://gossip-frontend.vercel.app",
   methods: "GET, POST, PUT, DELETE",
   credentials:true,
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token', 'set-cookie'],
   exposedHeaders: [
     "Set-Cookie",
     //... 
@@ -90,6 +91,7 @@ app.use(session
     //store: new RedisStore({ client: redisClient }),
     secret: "our little secret.",
     resave: false,
+    proxy: true,
     saveUninitialized: false,
     cookie: {
       sameSite: "none",
@@ -333,7 +335,7 @@ req.login(user, function(err) {
  res.cookie("username", "JohnDoe", {domain: 'https://gossip-frontend.vercel.app', path: "/login", sameSite: "none", secure: true}); 
  res.cookie("username", "JohnDoe", {domain: 'gossip-frontend.vercel.app', path: "/", sameSite: "none", secure: true}); 
   
- return res.send("DONE18");
+ return res.send("DONE19");
   //return res.redirect("/secrets");
 });
 

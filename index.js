@@ -327,7 +327,7 @@ console.log(user)
 req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
- res.cookie("username", "JohnDoe", {domain: ".vercel.app", sameSite: "none", secure: true}); 
+ res.cookie("username", "JohnDoe", {domain: ".vercel.app", sameSite: "lax", secure: true}); 
    return res.send("DONE11");
   //return res.redirect("/secrets");
 });

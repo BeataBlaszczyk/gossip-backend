@@ -51,13 +51,13 @@ app.use(function (req, res, next) {
   next();
 });
 app.use(function(req, res, next) {
-  res.header('Access-Control-Expose-Headers', ['Content-Range', 'X-Content-Range']);
+  res.header('Access-Control-Expose-Headers', ['Content-Range', 'Set-Cookie', 'X-Content-Range']);
   //res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Origin', req.get('Origin'));
   res.header("Access-Control-Allow-Credentials: true");
 res.header("Access-Control-Allow-Methods: GET, POST");
-res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+res.header("Access-Control-Allow-Headers", "Origin, Set-Cookie, X-Requested-With, Content-Type, Accept")
+  //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
@@ -66,7 +66,7 @@ app.use(cors({
   methods: "GET, POST, PUT, DELETE",
   credentials:true,
   exposedHeaders: [
-    "set-cookie",
+    "Set-Cookie",
     //... 
 ]
 }));

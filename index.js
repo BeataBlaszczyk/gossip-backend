@@ -75,7 +75,7 @@ app.use(session
       sameSite: "none",
       
       httpOnly: false,
-      domain: ".vercel.app",
+      domain: "gossip-frontend.vercel.app",
       //secureProxy: true,
       secure: true, // true dla https,
       maxAge: 24*60*60*1000, //one day,

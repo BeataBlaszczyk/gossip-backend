@@ -305,7 +305,8 @@ console.log(user)
 req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
-  return res.redirect("/secrets");
+  res.send(res.cookie)
+  //return res.redirect("/secrets");
 });
 
 })

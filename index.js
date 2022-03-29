@@ -33,7 +33,7 @@ app.use(function (req, res, next) {
 
   
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'https://gossip-frontend.vercel.app');
+  res.setHeader('Access-Control-Allow-Origin', 'gossip-frontend.vercel.app');
 
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -49,7 +49,7 @@ app.use(function (req, res, next) {
   next();
 });
 app.use(function(req, res, next) {
-  res.header('Access-Control-Expose-Headers', "set-cookie");
+  res.header('Access-Control-Expose-Headers', "Set-Cookie");
   //res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Origin', req.get('Origin'));
   res.header("Access-Control-Allow-Credentials: true");
@@ -60,7 +60,7 @@ res.header("Access-Control-Allow-Headers: Content-Type, *");
 });
 
 app.use(cors({
-  origin: "https://gossip-frontend.vercel.app",
+  origin: "gossip-frontend.vercel.app",
   methods: "GET, POST, PUT, DELETE",
   credentials:true
 }));
@@ -313,7 +313,7 @@ req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
  res.cookie("username", "JohnDoe", {domain: ".vercel.app", sameSite: "none", secure: true}); 
-   return res.send("DONE6");
+   return res.send("DONE7");
   //return res.redirect("/secrets");
 });
 

@@ -73,13 +73,13 @@ app.use(cookieSession
     saveUninitialized: false,
     cookie: {
       sameSite: "none",
-      path: "/",
+      
       httpOnly: false,
       domain: ".vercel.app",
-      secureProxy: true,
+      //secureProxy: true,
       secure: true, // true dla https,
       maxAge: 24*60*60*1000, //one day,
-      credentials: true
+     
     }
   })
 );

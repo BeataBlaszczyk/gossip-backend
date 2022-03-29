@@ -65,7 +65,7 @@ app.use(cors({
 
 app.set("trust proxy", 1)
 
-app.use(session
+app.use(cookieSession
   ({
     //store: new RedisStore({ client: redisClient }),
     secret: "our little secret.",
@@ -73,11 +73,13 @@ app.use(session
     saveUninitialized: false,
     cookie: {
       sameSite: "none",
+      path: "/",
       httpOnly: false,
       domain: ".vercel.app",
       secureProxy: true,
       secure: true, // true dla https,
-      maxAge: 24*60*60*1000 //one day
+      maxAge: 24*60*60*1000, //one day,
+      credentials: true
     }
   })
 );

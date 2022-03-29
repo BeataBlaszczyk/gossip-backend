@@ -73,6 +73,7 @@ app.use(
     cookie: {
       sameSite: "none",
       domain: "*.vercel.app",
+      path: "/",
       secure: true, // true dla https,
       maxAge: 24*60*60*1000 //one day
     }

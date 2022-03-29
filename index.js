@@ -288,12 +288,12 @@ User.register({username:req.body.username}, req.body.password, function(err, use
     console.log("try secret)" + req.isAuthenticated())
 
    
-  Secret.find(function(err, foundSecrets){
-    if (foundSecrets){
-      console.log(foundSecrets)
-        res.send (foundSecrets);
-    }
-  })
+  // Secret.find(function(err, foundSecrets){
+  //   if (foundSecrets){
+  //     console.log(foundSecrets)
+  //       res.send (foundSecrets);
+  //   }
+  //})
     return res.send("try secret)" + req.isAuthenticated())
   })
 // app.post("/secrets", function (req, res) {

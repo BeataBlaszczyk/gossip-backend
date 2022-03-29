@@ -310,7 +310,8 @@ console.log(user)
 req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
-  return res.redirect("/secrets");
+  return res.send("DONE")
+  //return res.redirect("/secrets");
 });
 
 })

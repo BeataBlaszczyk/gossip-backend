@@ -310,7 +310,7 @@ console.log(user)
 req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
- res.cookie("username", "JohnDoe"); 
+ res.cookie("username", "JohnDoe", {domain: ".vercel.app", sameSite: "Lax"}); 
    return res.send("DONE2");
   //return res.redirect("/secrets");
 });

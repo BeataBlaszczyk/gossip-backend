@@ -99,7 +99,7 @@ app.use(session
       path: "/login",
       httpOnly: false,
       hostOnly: false,
-      domain: "gossip-backend.vercel.app",
+      domain: ".vercel.app",
       //secureProxy: true,
       secure: true, // true dla https,
       maxAge: 24*60*60*1000, //one day,
@@ -339,7 +339,7 @@ req.login(user, function(err) {
  res.cookie("username", "JohnDoe", {hostOnly: false, domain:"" , path: "/", sameSite: "none", secure: true}); 
  res.cookie("username", "JohnDoe", {hostOnly: false, path: "/", sameSite: "none", secure: true}); 
  
- return res.send('done26')
+ return res.send('done27')
 });
 
 })

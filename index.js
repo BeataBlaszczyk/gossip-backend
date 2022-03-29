@@ -2,6 +2,7 @@
 
 require("dotenv").config();
 const cookieSession = require("cookie-session")
+const cookieParser = require('cookie-parser')
 const express = require("express");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
@@ -22,7 +23,7 @@ app.use(function (request, response, next) {
   next();
 });
 
-
+app.use(cookieParser())
 app.use(express.static("public"));
 //app.set('view engine', 'ejs');
 

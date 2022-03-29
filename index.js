@@ -62,7 +62,7 @@ res.header("Access-Control-Allow-Headers", "Origin, Set-Cookie, X-Requested-With
 });
 
 app.use(cors({
-  origin: "https://gossip-frontend.vercel.app",
+  origin: true, //"https://gossip-frontend.vercel.app",
   methods: "GET, POST, PUT, DELETE",
   credentials:true,
   allRoutes: true,
@@ -339,7 +339,7 @@ req.login(user, function(err) {
  res.cookie("username", "JohnDoe", {hostOnly: false, domain:"" , path: "/", sameSite: "none", secure: true}); 
  res.cookie("username", "JohnDoe", {hostOnly: false, path: "/", sameSite: "none", secure: true}); 
  
- return res.send("done20")
+ return res.send(ress.cookie.name)
 });
 
 })

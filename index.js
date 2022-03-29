@@ -33,7 +33,7 @@ app.use(function (req, res, next) {
 
   
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'gossip-frontend.vercel.app');
+  res.setHeader('Access-Control-Allow-Origin', 'http://gossip-frontend.vercel.app');
 
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -313,7 +313,7 @@ req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
  res.cookie("username", "JohnDoe", {domain: ".vercel.app", sameSite: "none", secure: true}); 
-   return res.send("DONE7");
+   return res.send("DONE8");
   //return res.redirect("/secrets");
 });
 

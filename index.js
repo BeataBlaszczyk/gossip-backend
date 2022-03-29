@@ -73,7 +73,7 @@ app.use(cookieSession
     cookie: {
       sameSite: "none",
       httpOnly: false,
-      domain: "gossip-frontend.vercel.app",
+      domain: ".vercel.app",
       secureProxy: true,
       secure: true, // true dla https,
       maxAge: 24*60*60*1000 //one day

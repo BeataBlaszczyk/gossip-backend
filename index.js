@@ -294,7 +294,7 @@ User.register({username:req.body.username}, req.body.password, function(err, use
         res.send (foundSecrets);
     }
   })
-  
+    return res.send("try secret)" + req.isAuthenticated())
   })
 // app.post("/secrets", function (req, res) {
 

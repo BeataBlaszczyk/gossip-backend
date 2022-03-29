@@ -1,6 +1,8 @@
 //jshint esversion:6
 
 require("dotenv").config();
+const redis = require('redis');
+const connectRedis = require('connect-redis');
 const cookieSession = require("cookie-session")
 const cookieParser = require('cookie-parser')
 const express = require("express");
@@ -28,7 +30,7 @@ app.use(express.static("public"));
 //app.set('view engine', 'ejs');
 
 app.use(express.json());
-
+app.set("trust proxy", 1)
 app.use(function (req, res, next) {
 
   
@@ -65,11 +67,19 @@ app.use(cors({
   credentials:true
 }));
 
-app.set("trust proxy", 1)
+const RedisStore = connectRedis(session)
+const redisClient = redis.createClient()
+
+redisClient.on('error', function (err) {
+  console.log('Could not establish a connection with redis. ' + err);
+});
+redisClient.on('connect', function (err) {
+  console.log('Connected to redis successfully');
+});
 
 app.use(session
   ({
-    //store: new RedisStore({ client: redisClient }),
+    store: new RedisStore({ client: redisClient }),
     secret: "our little secret.",
     resave: false,
     saveUninitialized: false,
@@ -313,7 +323,7 @@ req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
  res.cookie("username", "JohnDoe", {domain: ".vercel.app", sameSite: "none", secure: true}); 
-   return res.send("DONE9");
+   return res.send("DONE10");
   //return res.redirect("/secrets");
 });
 

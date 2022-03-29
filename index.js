@@ -65,7 +65,7 @@ app.use(cors({
 
 app.set("trust proxy", 1)
 
-app.use(cookieSession
+app.use(session
   ({
     //store: new RedisStore({ client: redisClient }),
     secret: "our little secret.",

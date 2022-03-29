@@ -1,8 +1,8 @@
 //jshint esversion:6
 
 require("dotenv").config();
-const redis = require('redis');
-const connectRedis = require('connect-redis');
+//const redis = require('redis');
+//const connectRedis = require('connect-redis');
 const cookieSession = require("cookie-session")
 const cookieParser = require('cookie-parser')
 const express = require("express");
@@ -18,7 +18,7 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const findOrCreate = require("mongoose-findorcreate");
-
+//const REDIS_PORT=6379;
 app.use(function (request, response, next) {
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -67,19 +67,23 @@ app.use(cors({
   credentials:true
 }));
 
-const RedisStore = connectRedis(session)
-const redisClient = redis.createClient()
+// const RedisStore = connectRedis(session)
+// const redisClient = redis.createClient(REDIS_PORT);
 
-redisClient.on('error', function (err) {
-  console.log('Could not establish a connection with redis. ' + err);
-});
-redisClient.on('connect', function (err) {
-  console.log('Connected to redis successfully');
-});
+// (async () => {
+//   await redisClient.connect();
+// })();
+
+// redisClient.on('error', function (err) {
+//   console.log('Could not establish a connection with redis. ' + err);
+// });
+// redisClient.on('connect', function (err) {
+//   console.log('Connected to redis successfully');
+// });
 
 app.use(session
   ({
-    store: new RedisStore({ client: redisClient }),
+    //store: new RedisStore({ client: redisClient }),
     secret: "our little secret.",
     resave: false,
     saveUninitialized: false,

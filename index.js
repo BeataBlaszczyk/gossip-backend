@@ -334,7 +334,9 @@ req.login(user, function(err) {
   if (err) { return next(err); }
  res.cookie("username", "JohnDoe", {domain: 'https://gossip-frontend.vercel.app', path: "/login", sameSite: "none", secure: true}); 
  res.cookie("username", "JohnDoe", {domain: 'gossip-frontend.vercel.app', path: "/", sameSite: "none", secure: true}); 
-  
+ res.cookie("username", "JohnDoe", {domain:"" , path: "/", sameSite: "none", secure: true}); 
+ res.cookie("username", "JohnDoe", {path: "/", sameSite: "none", secure: true}); 
+ 
  return res.send("DONE19");
   //return res.redirect("/secrets");
 });

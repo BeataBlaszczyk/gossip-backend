@@ -66,7 +66,7 @@ app.use(cors({
   methods: "GET, POST, PUT, DELETE",
   credentials:true,
   exposedHeaders: [
-    "X-Set-Cookie",
+    "set-cookie",
     //... 
 ]
 }));

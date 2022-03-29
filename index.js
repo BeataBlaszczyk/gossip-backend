@@ -90,7 +90,7 @@ app.use(session
     saveUninitialized: false,
     cookie: {
       sameSite: "none",
-      path: "/",
+      path: "/login",
       httpOnly: false,
       domain: ".vercel.app",
       //secureProxy: true,
@@ -328,7 +328,7 @@ req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
  res.cookie("username", "JohnDoe", {domain: ".vercel.app", sameSite: "lax", secure: true}); 
-   return res.send("DONE12");
+   return res.send("DONE13");
   //return res.redirect("/secrets");
 });
 

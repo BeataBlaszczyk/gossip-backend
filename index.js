@@ -60,7 +60,7 @@ res.header("Access-Control-Allow-Headers: Content-Type, *");
 });
 
 app.use(cors({
-  origin: "gossip-frontend.vercel.app",
+  origin: "http://gossip-frontend.vercel.app",
   methods: "GET, POST, PUT, DELETE",
   credentials:true
 }));
@@ -75,7 +75,7 @@ app.use(session
     saveUninitialized: false,
     cookie: {
       sameSite: "none",
-      
+      path: "/",
       httpOnly: false,
       domain: ".vercel.app",
       //secureProxy: true,
@@ -313,7 +313,7 @@ req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
  res.cookie("username", "JohnDoe", {domain: ".vercel.app", sameSite: "none", secure: true}); 
-   return res.send("DONE8");
+   return res.send("DONE9");
   //return res.redirect("/secrets");
 });
 

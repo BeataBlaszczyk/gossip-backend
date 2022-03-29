@@ -33,7 +33,7 @@ app.use(express.json());
 app.set("trust proxy", 1)
 app.use(function (req, res, next) {
 
-  res.setHeader('Access-Control-Allow-Headers', 'Set-Cookie')
+  //res.setHeader('Access-Control-Allow-Headers', 'Set-Cookie')
   // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Origin', 'https://gossip-frontend.vercel.app');
 
@@ -52,7 +52,7 @@ app.use(function (req, res, next) {
 });
 app.use(function(req, res, next) {
   res.header('Access-Control-Expose-Headers', ['Content-Range', 'Set-Cookie', 'X-Content-Range']);
-  res.header("Access-Control-Allow-Origin", "https://gossip-frontend.vercel.app");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Origin', req.get('Origin'));
   res.header("Access-Control-Allow-Credentials: true");
   res.header("Access-Control-request-Methods: GET, POST");
@@ -98,7 +98,7 @@ app.use(session
     saveUninitialized: false,
     cookie: {
       sameSite: "none",
-      path: "/login",
+      path: "/",
       httpOnly: false,
       hostOnly: false,
       domain: ".vercel.app",

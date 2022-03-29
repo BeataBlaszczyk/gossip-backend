@@ -33,7 +33,7 @@ app.use(express.json());
 app.set("trust proxy", 1)
 app.use(function (req, res, next) {
 
-  
+  res.setHeader('Access-Control-Allow-Headers', 'Set-Cookie')
   // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Origin', 'https://gossip-frontend.vercel.app');
 

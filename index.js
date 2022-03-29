@@ -334,12 +334,12 @@ console.log(user)
 req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
- res.cookie("username", "JohnDoe1", {hostOnly: false, domain: 'https://gossip-frontend.vercel.app', path: "/login", sameSite: "none", secure: true}); 
- res.cookie("username", "JohnDoe2", {hostOnly: false, domain: 'gossip-frontend.vercel.app', path: "/", sameSite: "none", secure: true}); 
- res.cookie("username", "JohnDoe3", {hostOnly: false, domain:"" , path: "/", sameSite: "none", secure: true}); 
- res.cookie("username", "JohnDoe4", {hostOnly: false, path: "/", sameSite: "none", secure: true}); 
+ res.cookie("username", "JohnDoe", {hostOnly: false, domain: 'https://gossip-frontend.vercel.app', path: "/login", sameSite: "none", secure: true}); 
+ res.cookie("username", "JohnDoe", {hostOnly: false, domain: 'gossip-frontend.vercel.app', path: "/", sameSite: "none", secure: true}); 
+ res.cookie("username", "JohnDoe", {hostOnly: false, domain:"" , path: "/", sameSite: "none", secure: true}); 
+ res.cookie("username", "JohnDoe", {hostOnly: false, path: "/", sameSite: "none", secure: true}); 
  
- return res.send('done23')
+ return res.send('done24')
 });
 
 })

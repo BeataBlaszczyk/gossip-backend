@@ -64,8 +64,8 @@ app.use(cors({
 
 app.set("trust proxy", 1)
 
-app.use(
-  session({
+app.use(express.cookieSession
+  ({
     //store: new RedisStore({ client: redisClient }),
     secret: "our little secret.",
     resave: false,
@@ -307,11 +307,6 @@ console.log(user)
 req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
-  
-  req.session.save(()=>{
-    res.redirect("/secrets");
-  })
-  
   return res.redirect("/secrets");
 });
 

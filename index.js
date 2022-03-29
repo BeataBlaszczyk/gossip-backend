@@ -49,7 +49,9 @@ app.use(function (req, res, next) {
   next();
 });
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Expose-Headers', "Set-Cookie");
+  //res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Origin', req.get('Origin'));
   res.header("Access-Control-Allow-Credentials: true");
 res.header("Access-Control-Allow-Methods: GET, POST");
 res.header("Access-Control-Allow-Headers: Content-Type, *");
@@ -310,8 +312,8 @@ console.log(user)
 req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
- res.cookie("username", "JohnDoe", {domain: "vercel.app", sameSite: "none", secure: true}); 
-   return res.send("DONE4");
+ res.cookie("username", "JohnDoe", {domain: ".vercel.app", sameSite: "none", secure: true}); 
+   return res.send("DONE5");
   //return res.redirect("/secrets");
 });
 

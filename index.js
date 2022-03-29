@@ -33,7 +33,7 @@ app.use(express.json());
 app.set("trust proxy", 1)
 app.use(function (req, res, next) {
 
-  //res.setHeader('Access-Control-Allow-Headers', 'Set-Cookie')
+  res.setHeader('Access-Control-Allow-Headers', 'Set-Cookie')
   // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Origin', 'https://gossip-frontend.vercel.app');
 
@@ -65,7 +65,6 @@ app.use(cors({
   origin: "https://gossip-frontend.vercel.app",
   methods: "GET, POST, PUT, DELETE",
   credentials:true,
-  allRoutes: true,
   allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token', 'set-cookie'],
   exposedHeaders: [
     "Set-Cookie",
@@ -339,7 +338,7 @@ req.login(user, function(err) {
  res.cookie("username", "JohnDoe", {hostOnly: false, domain:"" , path: "/", sameSite: "none", secure: true}); 
  res.cookie("username", "JohnDoe", {hostOnly: false, path: "/", sameSite: "none", secure: true}); 
  
- return res.send('done27')
+ return res.send("done20")
 });
 
 })

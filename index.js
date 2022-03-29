@@ -310,6 +310,7 @@ console.log(user)
 req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
+  document.cookie = "username=John Doe; expires=Thu, 18 Dec 2023 12:00:00 UTC";
   return res.send("DONE")
   //return res.redirect("/secrets");
 });

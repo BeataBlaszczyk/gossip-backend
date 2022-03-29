@@ -64,7 +64,8 @@ res.header("Access-Control-Allow-Headers: Content-Type, *");
 app.use(cors({
   origin: "https://gossip-frontend.vercel.app",
   methods: "GET, POST, PUT, DELETE",
-  credentials:true
+  credentials:true,
+  exposedHeaders: ["set-cookie"],
 }));
 
 // const RedisStore = connectRedis(session)
@@ -327,7 +328,7 @@ req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
  res.cookie("username", "JohnDoe", {domain: ".vercel.app", sameSite: "none", secure: true}); 
-   return res.send("DONE10");
+   return res.send("DONE11");
   //return res.redirect("/secrets");
 });
 

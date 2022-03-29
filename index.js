@@ -327,7 +327,7 @@ console.log(user)
 req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
- res.cookie("username", "JohnDoe", {domain: "gossip-frontend.vercel.app", path: "/login", sameSite: "none", secure: true}); 
+ res.cookie("username", "JohnDoe", {domain: 'https://gossip-frontend.vercel.app', path: "/login", sameSite: "none", secure: true}); 
    return res.send("DONE16");
   //return res.redirect("/secrets");
 });

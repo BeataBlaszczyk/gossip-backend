@@ -352,7 +352,7 @@ req.login(user, function(err) {
 
 app.post('/login',
   passport.authenticate('local', { successRedirect: "/secrets",
-  failureRedirect: "https://gossip-frontend.vercel.app/login" }),
+  failureRedirect: "/" }),
   function(req, res) {
     //res.send('/~' + req.isAuthenticated());
     return res.redirect("/secrets");
@@ -368,3 +368,7 @@ let port = process.env.PORT || 3001;
 app.listen(port, function () {
   console.log("Successfully started on port 3001. ");
 });
+
+app.get("/", function(req,res){
+  res.send("unsuccessed login !")
+})

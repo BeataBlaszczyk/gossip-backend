@@ -315,7 +315,7 @@ User.register({username:req.body.username}, req.body.password, function(err, use
 // });
 
 
-app.get("/login", passport.authenticate("local",{
+app.get("/login2", passport.authenticate("local",{
   successRedirect: "",
   failureRedirect: "/"
 }))
@@ -333,6 +333,9 @@ const user = new User({
 
 console.log(user)
 
+
+
+
 req.login(user, function(err) {
   console.log("is auth => " + req.isAuthenticated())
   if (err) { return next(err); }
@@ -341,11 +344,18 @@ req.login(user, function(err) {
  res.cookie("username", "JohnDoe3", {hostOnly: false, domain:"" , path: "/", sameSite: "none", secure: true}); 
  res.cookie("username", "JohnDoe4", {hostOnly: false, path: "/", sameSite: "none", secure: true}); 
  
-  //res.send("done35")
- return res.redirect("/secrets");
+  res.send("done35" + req.isAuthenticated() )
+ //return res.redirect("/secrets");
 });
 
 })
+
+app.post('/login',
+  passport.authenticate('local', {  }),
+  function(req, res) {
+    res.send('/~' + req.isAuthenticated());
+    
+  });
 
 app.get("/logout", function (req, res) {
   req.logout();

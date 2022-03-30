@@ -101,7 +101,7 @@ app.use(session
       path: "/",
       httpOnly: false,
       hostOnly: false,
-      //domain: ".vercel.app",
+      domain: "gossip-frontend.vercel.app",
       //secureProxy: true,
       secure: true, // true dla https,
       maxAge: 24*60*60*1000, //one day,
@@ -283,10 +283,11 @@ User.register({username:req.body.username}, req.body.password, function(err, use
 
   });
 
+  
 
   app.get("/secrets", function(req,res){
     console.log("try secret)" + req.isAuthenticated())
-
+    //res.cookie('cookieName',randomNumber, { maxAge: 900000, httpOnly: true })
     //console.log(req.cookies.split('; '))
     console.log(req.cookies)
     

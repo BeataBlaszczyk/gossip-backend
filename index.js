@@ -370,6 +370,6 @@ app.listen(port, function () {
 });
 
 app.get("/", function(req,res){
-  res.redirect("https://gossip-frontend.vercel.app")
-  //res.send("unsuccessed login !")
+  //res.redirect("https://gossip-frontend.vercel.app")
+  res.send("unsuccessed login !")
 })

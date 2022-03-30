@@ -65,7 +65,7 @@ res.header("Access-Control-Allow-Headers", "Origin, Set-Cookie, X-Requested-With
 });
 
 app.use(cors({
-  origin: ["https://gossip-frontend.vercel.app", "https://gossip-backend.vercel.app/login"],
+  origin: ["https://gossip-frontend.vercel.app"],
   methods: "GET, POST, PUT, DELETE",
   credentials:true,
   allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token', 'set-cookie'],

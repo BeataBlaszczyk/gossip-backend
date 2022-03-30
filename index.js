@@ -315,12 +315,12 @@ User.register({username:req.body.username}, req.body.password, function(err, use
 // });
 
 
-app.get("/login2", passport.authenticate("local",{
+app.get("/login", passport.authenticate("local",{
   successRedirect: "",
   failureRedirect: "/"
 }))
 
-app.post("/login", function(req, res) {
+app.post("/login2", function(req, res) {
   const email = req.body.username;
   const password = req.body.password;
 

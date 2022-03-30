@@ -352,7 +352,7 @@ req.login(user, function(err) {
 
 app.post('/login',
   passport.authenticate('local', { successRedirect: "/secrets",
-  failureRedirect: "/login" }),
+  failureRedirect: "https://gossip-frontend.vercel.app/login" }),
   function(req, res) {
     //res.send('/~' + req.isAuthenticated());
     return res.redirect("/secrets");

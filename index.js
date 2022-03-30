@@ -287,14 +287,16 @@ User.register({username:req.body.username}, req.body.password, function(err, use
   app.get("/secrets", function(req,res){
     console.log("try secret)" + req.isAuthenticated())
 
-   
+    //console.log(req.cookies.split('; '))
+    console.log(req.cookies)
+    
   // Secret.find(function(err, foundSecrets){
   //   if (foundSecrets){
   //     console.log(foundSecrets)
   //       res.send (foundSecrets);
   //   }
   //})
-    return res.send("try secret - )" + req.isAuthenticated())
+    return res.send(req.cookies)
   })
 // app.post("/secrets", function (req, res) {
 

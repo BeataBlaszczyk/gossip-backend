@@ -353,8 +353,8 @@ req.login(user, function(err) {
 app.post('/login',
   passport.authenticate('local', {  }),
   function(req, res) {
-    res.send('/~' + req.isAuthenticated());
-    
+    //res.send('/~' + req.isAuthenticated());
+    return res.redirect("/secrets");
   });
 
 app.get("/logout", function (req, res) {

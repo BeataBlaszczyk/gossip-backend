@@ -52,7 +52,7 @@ app.use(function (req, res, next) {
 });
 app.use(function(req, res, next) {
   res.header('Access-Control-Expose-Headers', ['Content-Range', 'Set-Cookie', 'X-Content-Range']);
-  res.header("Access-Control-Allow-Origin", "*");
+  //res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Origin', req.get('Origin'));
   res.header("Access-Control-Allow-Credentials: true");
   res.header("Access-Control-request-Methods: GET, POST");
@@ -65,7 +65,7 @@ res.header("Access-Control-Allow-Headers", "Origin, Set-Cookie, X-Requested-With
 });
 
 app.use(cors({
-  origin: "https://gossip-frontend.vercel.app",
+  origin: ["https://gossip-frontend.vercel.app", "http://localhost:3000/"],
   methods: "GET, POST, PUT, DELETE",
   credentials:true,
   allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token', 'set-cookie'],
@@ -370,5 +370,6 @@ app.listen(port, function () {
 });
 
 app.get("/", function(req,res){
-  res.send("unsuccessed login !")
+  res.redirect("https://gossip-frontend.vercel.app")
+  //res.send("unsuccessed login !")
 })

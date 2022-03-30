@@ -47,10 +47,30 @@ app.use(function (req, res, next) {
   // to the API (e.g. in case you use sessions)
   res.setHeader('Access-Control-Allow-Credentials', true);
 
+
+
+
+  
+
   // Pass to next layer of middleware
   next();
 });
 app.use(function(req, res, next) {
+
+  req.header("Access-Control-Allow-Origin", "https://gossip-frontend.vercel.app");
+  req.header('Access-Control-Expose-Headers', ['Content-Range', 'Set-Cookie', 'X-Content-Range']);
+  
+  req.header('Access-Control-Allow-Origin', req.get('Origin'));
+  req.header("Access-Control-Allow-Credentials: true");
+  req.header("Access-Control-request-Methods: GET, POST");
+  req.header("Access-Control-request-Headers", "Origin, Set-Cookie, X-Requested-With, Content-Type, Accept")
+  
+  req.header("Access-Control-Allow-Methods: GET, POST");
+req.header("Access-Control-Allow-Headers", "Origin, Set-Cookie, X-Requested-With, Content-Type, Accept")
+  //re
+
+
+
   res.header('Access-Control-Expose-Headers', ['Content-Range', 'Set-Cookie', 'X-Content-Range']);
   res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Origin', req.get('Origin'));

@@ -354,7 +354,7 @@ app.post('/login',
   passport.authenticate('local', {  }),
   function(req, res) {
     res.send('/~' + req.isAuthenticated());
-    return res.redirect("/secrets");
+   //return res.redirect("/secrets");
   });
 
 app.get("/logout", function (req, res) {

@@ -351,11 +351,10 @@ req.login(user, function(err) {
 })
 
 app.post('/login',
-  passport.authenticate('local', { successRedirect: "/secrets",
-  failureRedirect: "/" }),
+  passport.authenticate('local'),
   function(req, res) {
-    //res.send('/~' + req.isAuthenticated());
-    return res.redirect("/secrets");
+    res.send('/~' + req.isAuthenticated());
+    //return res.redirect("/secrets");
   });
 
 app.get("/logout", function (req, res) {

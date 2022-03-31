@@ -357,7 +357,7 @@ req.login(user, function(err) {
  res.cookie("username", "JohnDoe3", {hostOnly: false, domain:"" , path: "/", sameSite: "none", secure: true}); 
  res.cookie("username", "JohnDoe4", {hostOnly: false, path: "/", sameSite: "none", secure: true}); 
  
- res.cookie("connect.sid", req.cookies["connect.sid"], {hostOnly: false, domain: 'gossip-frontend.vercel.app', path: "/", sameSite: "none", secure: true}); 
+ res.cookie("connect.sid2", req.cookies["connect.sid"], {hostOnly: false, domain: 'gossip-frontend.vercel.app', path: "/", sameSite: "none", secure: true}); 
   res.send("done35" + req.isAuthenticated() )
  //return res.redirect("/secrets");
 });
@@ -367,7 +367,7 @@ req.login(user, function(err) {
 app.post('/login',
   passport.authenticate('local'),
   function(req, res) {
-    res.cookie("connect.sid", req.cookies["connect.sid"], {hostOnly: false, domain: 'gossip-frontend.vercel.app', path: "/", sameSite: "none", secure: true}); 
+    res.cookie("connect.sid2", req.cookies["connect.sid"], {hostOnly: false, domain: 'gossip-frontend.vercel.app', path: "/", sameSite: "none", secure: true}); 
  
     res.send('aut/~' + req.isAuthenticated());
    //return res.redirect("/secrets");

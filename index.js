@@ -376,7 +376,7 @@ app.post('/login',function(req, res) {
 })
 
 req.login(user, function(err) {  
-  if (err) { return next(err); }
+  if (err) { return res.send(err); }
    res.send("done35" + req.isAuthenticated() )
   });
 })

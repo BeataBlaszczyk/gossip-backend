@@ -315,7 +315,7 @@ if (req.isAuthenticated()){
     }
   })
 } else{
-  res.send(["THETE IS NO ACCESS"])
+  res.send([])
 }
 
     //return res.send(req.cookies)

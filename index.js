@@ -32,7 +32,7 @@ app.use(express.static("public"));
 app.use(express.json());
 app.set("trust proxy", 1)
 app.use(function (req, res, next) {
-
+  res.set('Cache-control', `no-store`)
   //res.setHeader('Access-Control-Allow-Headers', 'Set-Cookie')
   // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Origin', 'https://gossip-frontend.vercel.app');
@@ -305,7 +305,7 @@ User.register({username:req.body.username}, req.body.password, function(err, use
         res.send (foundSecrets);
     }
   })
-  
+
     //return res.send(req.cookies)
   })
 // app.post("/secrets", function (req, res) {
@@ -370,7 +370,7 @@ app.post('/login',
   });
 
 app.get("/logout", function (req, res) {
-  req.logout();
+ //req.logout();
  
   //res.redirect('/');
 });

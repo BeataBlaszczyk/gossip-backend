@@ -384,7 +384,7 @@ app.post('/login',
   passport.authenticate('local'),
   function(req, res) {
     //res.cookie("connect.sid2", req.cookies["connect.sid"], {hostOnly: false, domain: 'gossip-frontend.vercel.app', path: "/", sameSite: "none", secure: true}); 
- 
+    //res.send(res.cookies["connect.sid"])
   res.redirect("/cookie")
    //return res.redirect("/secrets");
   });

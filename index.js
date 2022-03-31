@@ -294,9 +294,9 @@ User.register({username:req.body.username}, req.body.password, function(err, use
 
   app.post("/secrets", function(req,res){
     console.log(req.body.cookie)
-    res.cookie("connect.sid", req.body.cookie, 
-    {maxAge: 24 * 60 * 60 * 1000, 
-     path: "/", sameSite: "none", secure: true}); 
+    //res.cookie("connect.sid", req.body.cookie, 
+    //{maxAge: 24 * 60 * 60 * 1000, 
+     //path: "/", sameSite: "none", secure: true}); 
      //res.cookie("username", "JohnDoe4", {hostOnly: false, path: "/", sameSite: "none", secure: true}); 
  //console.log(res.cookies)
       res.redirect("secrets")

@@ -108,7 +108,7 @@ app.use(session
       path: "/",
       httpOnly: false,
       hostOnly: false,
-     domain:"gossip-frontend.vercel.app",
+     //domain:"gossip-frontend.vercel.app",
       //secureProxy: true,
       secure: true, // true dla https,
       maxAge: 24*60*60*1000, //one day,
@@ -333,7 +333,7 @@ app.get("/login", passport.authenticate("local",{
   failureRedirect: "/"
 }))
 
-app.post("/login", function(req, res) {
+app.post("/login2", function(req, res) {
   const email = req.body.username;
   const password = req.body.password;
 
@@ -364,7 +364,7 @@ req.login(user, function(err) {
 
 })
 
-app.post('/login2',
+app.post('/login',
   passport.authenticate('local'),
   function(req, res) {
     //res.cookie("connect.sid2", req.cookies["connect.sid"], {hostOnly: false, domain: 'gossip-frontend.vercel.app', path: "/", sameSite: "none", secure: true}); 

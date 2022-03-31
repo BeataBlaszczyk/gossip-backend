@@ -369,11 +369,11 @@ app.post('/login',
   function(req, res) {
     //res.cookie("connect.sid2", req.cookies["connect.sid"], {hostOnly: false, domain: 'gossip-frontend.vercel.app', path: "/", sameSite: "none", secure: true}); 
  
-  redirect("/cookie")
+  res.redirect("/cookie")
    //return res.redirect("/secrets");
   });
 
-app.get("cookie", function(req,res){
+app.get("/cookie", function(req,res){
   res.send(req.cookies["connect.sid"]);
 })
 

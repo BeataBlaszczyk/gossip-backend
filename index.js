@@ -315,7 +315,7 @@ if (req.isAuthenticated()){
     }
   })
 } else{
-  res.send([])
+  res.send("" + req.cookies["connect.sid"])
 }
 
     //return res.send(req.cookies)

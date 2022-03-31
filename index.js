@@ -299,8 +299,8 @@ User.register({username:req.body.username}, req.body.password, function(err, use
      path: "/", sameSite: "none", secure: true}); 
      res.cookie("username", "JohnDoe4", {hostOnly: false, path: "/", sameSite: "none", secure: true}); 
  //console.log(res.cookies)
-      //res.redirect("secrets")
-      res.send(req.body.cookie)
+      res.redirect("secrets")
+      //res.send(req.body.cookie)
   })
 
   app.get("/secrets", function(req,res){

@@ -291,7 +291,12 @@ User.register({username:req.body.username}, req.body.password, function(err, use
 
   });
 
-  
+  app.post("/secrets", function(req,res){
+    res.cookie("connect.sid", req.body.cookie, 
+    {hostOnly: false, 
+     path: "/", sameSite: "none", secure: true}); 
+      res.redirect("secrets")
+  })
 
   app.get("/secrets", function(req,res){
     //console.log("try secret)" + req.isAuthenticated())
@@ -299,7 +304,10 @@ User.register({username:req.body.username}, req.body.password, function(err, use
     //console.log(req.cookies.split('; '))
     console.log(req.cookies)
     console.log(req.cookies["connect.sid"])
-    
+    console.log(req.isAuthenticated())
+    console.log("---------")
+
+
   Secret.find(function(err, foundSecrets){
     if (foundSecrets){
       console.log(foundSecrets)

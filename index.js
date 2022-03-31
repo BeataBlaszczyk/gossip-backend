@@ -18,6 +18,7 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const findOrCreate = require("mongoose-findorcreate");
+const { cookie } = require("express/lib/response");
 //const REDIS_PORT=6379;
 app.use(function (request, response, next) {
   response.header("Access-Control-Allow-Origin", "*");
@@ -292,10 +293,13 @@ User.register({username:req.body.username}, req.body.password, function(err, use
   });
 
   app.post("/secrets", function(req,res){
+    console.log(req.body.cookie)
     res.cookie("connect.sid", req.body.cookie, 
-    {hostOnly: false, 
+    {maxAge: 2 * 60 * 60 * 1000, 
      path: "/", sameSite: "none", secure: true}); 
-      res.redirect("secrets")
+     res.cookie("username", "JohnDoe4", {hostOnly: false, path: "/", sameSite: "none", secure: true}); 
+ //console.log(res.cookies)
+      //res.redirect("secrets")
   })
 
   app.get("/secrets", function(req,res){
@@ -310,7 +314,7 @@ User.register({username:req.body.username}, req.body.password, function(err, use
 if (req.isAuthenticated()){
   Secret.find(function(err, foundSecrets){
     if (foundSecrets){
-      console.log(foundSecrets)
+      //console.log(foundSecrets)
         res.send (foundSecrets);
     }
   })

@@ -307,13 +307,16 @@ User.register({username:req.body.username}, req.body.password, function(err, use
     console.log(req.isAuthenticated())
     console.log("---------")
 
-
+if (req.isAuthenticated()){
   Secret.find(function(err, foundSecrets){
     if (foundSecrets){
       console.log(foundSecrets)
         res.send (foundSecrets);
     }
   })
+} else{
+  res.send(["THETE IS NO ACCESS"])
+}
 
     //return res.send(req.cookies)
   })

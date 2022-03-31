@@ -283,7 +283,8 @@ User.register({username:req.body.username}, req.body.password, function(err, use
   }else{
     passport.authenticate("local")(req,res, function(){
       //console.log("is auth => " + req.isAuthenticated())
-      res.redirect("/secrets")
+      res.send(success)
+      //res.redirect("/secrets")
     })
   }
 })
@@ -361,11 +362,10 @@ req.login(user, function(err) {
 })
 
 app.post('/login',
-  passport.authenticate('local', { successRedirect: "/secrets",
-  failureRedirect: "/" }),
+  passport.authenticate('local'),
   function(req, res) {
-    //res.send('aut/~' + req.isAuthenticated());
-   return res.redirect("/secrets");
+    res.send('aut/~' + req.isAuthenticated());
+   //return res.redirect("/secrets");
   });
 
 app.get("/logout", function (req, res) {

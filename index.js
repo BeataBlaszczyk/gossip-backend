@@ -95,19 +95,6 @@ app.use(cors({
 ]
 }));
 
-// const RedisStore = connectRedis(session)
-// const redisClient = redis.createClient(REDIS_PORT);
-
-// (async () => {
-//   await redisClient.connect();
-// })();
-
-// redisClient.on('error', function (err) {
-//   console.log('Could not establish a connection with redis. ' + err);
-// });
-// redisClient.on('connect', function (err) {
-//   console.log('Connected to redis successfully');
-// });
 
 app.use(session
   ({
@@ -257,8 +244,8 @@ app.post("/submit", function (req, res) {
   secret.save();
   Secret.update();
 
-  res.json(secret);
-  //res.redirect("secrets")
+  //res.json(secret);
+  res.redirect("secrets")
 });
 
 app.get(
@@ -292,10 +279,10 @@ app.post("/register", function(req, res) {
 User.register({username:req.body.username}, req.body.password, function(err, user){
   if(err){
     console.log(err);
-    res.redirect("http://localhost:3002/login");
+    //res.redirect("http://localhost:3002/login");
   }else{
     passport.authenticate("local")(req,res, function(){
-      console.log("is auth => " + req.isAuthenticated())
+      //console.log("is auth => " + req.isAuthenticated())
       res.redirect("/secrets")
     })
   }
@@ -306,18 +293,18 @@ User.register({username:req.body.username}, req.body.password, function(err, use
   
 
   app.get("/secrets", function(req,res){
-    console.log("try secret)" + req.isAuthenticated())
+    //console.log("try secret)" + req.isAuthenticated())
     //res.cookie('cookieName',randomNumber, { maxAge: 900000, httpOnly: true })
     //console.log(req.cookies.split('; '))
-    console.log(req.cookies)
+    //console.log(req.cookies)
     
-  // Secret.find(function(err, foundSecrets){
-  //   if (foundSecrets){
-  //     console.log(foundSecrets)
-  //       res.send (foundSecrets);
-  //   }
-  //})
-    return res.send(req.cookies)
+  Secret.find(function(err, foundSecrets){
+    if (foundSecrets){
+      console.log(foundSecrets)
+        res.send (foundSecrets);
+    }
+  })
+    //return res.send(req.cookies)
   })
 // app.post("/secrets", function (req, res) {
 
@@ -377,8 +364,8 @@ app.post('/login',
   passport.authenticate('local', { successRedirect: "/secrets",
   failureRedirect: "/" }),
   function(req, res) {
-    res.send('aut/~' + req.isAuthenticated());
-   //return res.redirect("/secrets");
+    //res.send('aut/~' + req.isAuthenticated());
+   return res.redirect("/secrets");
   });
 
 app.get("/logout", function (req, res) {

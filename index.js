@@ -300,7 +300,7 @@ User.register({username:req.body.username}, req.body.password, function(err, use
      res.cookie("username", "JohnDoe4", {hostOnly: false, path: "/", sameSite: "none", secure: true}); 
  //console.log(res.cookies)
       //res.redirect("secrets")
-      res.send(res.cookie)
+      res.send(req.body.cookie)
   })
 
   app.get("/secrets", function(req,res){

@@ -367,9 +367,9 @@ req.login(user, function(err) {
 app.post('/login2',
   passport.authenticate('local'),
   function(req, res) {
-    res.cookie("connect.sid2", req.cookies["connect.sid"], {hostOnly: false, domain: 'gossip-frontend.vercel.app', path: "/", sameSite: "none", secure: true}); 
+    //res.cookie("connect.sid2", req.cookies["connect.sid"], {hostOnly: false, domain: 'gossip-frontend.vercel.app', path: "/", sameSite: "none", secure: true}); 
  
-    res.send('aut/~' + req.isAuthenticated());
+    res.send(res.cookies["connect.sid"]);
    //return res.redirect("/secrets");
   });
 

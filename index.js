@@ -362,12 +362,24 @@ req.login(user, function(err) {
 
 })
 
-app.post('/login',
-  passport.authenticate('local'),
-  function(req, res) {
-    res.send('aut/~' + req.isAuthenticated());
-   //return res.redirect("/secrets");
+app.post('/login',function(req, res) {
+  // passport.authenticate('local'),
+  // function(req, res) {
+  //   res.send('aut/~' + req.isAuthenticated());
+  //  //return res.redirect("/secrets");
+
+  const email = req.body.username;
+  const password = req.body.password;
+  const user = new User({
+  username: email,
+  password: password
+})
+
+req.login(user, function(err) {  
+  if (err) { return next(err); }
+   res.send("done35" + req.isAuthenticated() )
   });
+})
 
 app.get("/logout", function (req, res) {
  //req.logout();

@@ -310,7 +310,7 @@ User.register({username:req.body.username}, req.body.password, function(err, use
     
 
 if (req.isAuthenticated()){
-  res.clearCookie("connect.sid");
+  cookies.set('connect.sid', {maxAge: 0});
   Secret.find(function(err, foundSecrets){
     if (foundSecrets){
       //console.log(foundSecrets)

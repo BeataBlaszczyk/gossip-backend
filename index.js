@@ -307,21 +307,18 @@ User.register({username:req.body.username}, req.body.password, function(err, use
     //console.log("try secret)" + req.isAuthenticated())
     //res.cookie('cookieName',randomNumber, { maxAge: 900000, httpOnly: true })
     //console.log(req.cookies.split('; '))
-    console.log(req.cookies)
-    console.log(req.cookies["connect.sid"])
-    console.log(req.isAuthenticated())
-    console.log("---------")
+    
 
-if (req.isAuthenticated()){
+//if (req.isAuthenticated()){
   Secret.find(function(err, foundSecrets){
     if (foundSecrets){
       //console.log(foundSecrets)
         res.send (foundSecrets);
     }
   })
-} else{
-  res.send("cookie requestowe " + req.cookies["connect.sid"])
-}
+// } else{
+  
+// }
 
     //return res.send(req.cookies)
   })

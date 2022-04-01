@@ -309,7 +309,7 @@ User.register({username:req.body.username}, req.body.password, function(err, use
     //console.log(req.cookies.split('; '))
     
 
-//if (req.isAuthenticated()){
+if (req.isAuthenticated()){
   Secret.find(function(err, foundSecrets){
     if (foundSecrets){
       //console.log(foundSecrets)
@@ -318,7 +318,7 @@ User.register({username:req.body.username}, req.body.password, function(err, use
   })
 // } else{
   
-// }
+ }
 
     //return res.send(req.cookies)
   })

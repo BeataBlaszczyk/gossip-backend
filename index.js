@@ -251,6 +251,8 @@ app.get("/submit", function(req,res){
 app.post("/submit", function (req, res) {
 
   if (req.isAuthenticated()){
+    console.log(req.isAuthenticated())
+  }
   console.log(req.body.secret);
 
   const secret = new Secret({
@@ -260,7 +262,7 @@ app.post("/submit", function (req, res) {
 
   secret.save();
   Secret.update();
-}
+
   //res.json(secret);
   res.redirect("/secrets")
 

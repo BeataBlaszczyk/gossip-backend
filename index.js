@@ -336,7 +336,7 @@ if (req.isAuthenticated()){
  } else{
   res.cookie('connect.sid', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true, maxAge: 0});
   res.cookie('gdgdg', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true});
-    return res.send("unouthorized")
+    return res.send("unauthorized")
  }
  
   })

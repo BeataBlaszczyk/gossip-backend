@@ -261,7 +261,7 @@ app.post("/submit", function (req, res) {
   Secret.update();
 
   //res.json(secret);
-  res.redirect("secrets")
+  res.redirect("/secrets")
 });
 
 app.get(

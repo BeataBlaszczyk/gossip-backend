@@ -234,7 +234,21 @@ app.get(
 
 //})
 
+app.get("/submit", function(req,res){
+  if (req.isAuthenticated()){
+    res.cookie('connect.sid', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true, maxAge: 0});
+
+    return res.send("authorized")
+
+} else{
+  res.cookie('connect.sid', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true, maxAge: 0});
+ 
+    return res.send("unauthorized")
+ }
+})
+
 app.post("/submit", function (req, res) {
+
   console.log(req.body.secret);
 
   const secret = new Secret({
@@ -279,12 +293,12 @@ app.post("/register", function(req, res) {
 
 User.register({username:req.body.username}, req.body.password, function(err, user){
   if(err){
-    console.log(err);
+    res.send(err);
     //res.redirect("http://localhost:3002/login");
   }else{
     passport.authenticate("local")(req,res, function(){
       //console.log("is auth => " + req.isAuthenticated())
-      res.send(success)
+      res.redirect("/cookie")
       //res.redirect("/secrets")
     })
   }
@@ -394,7 +408,8 @@ app.get("/cookie", function(req,res){
 })
 
 app.get("/logout", function (req, res) {
- //req.logout();
+ try { req.logout() }
+ finally {res.send("logout")}
  
   //res.redirect('/');
 });

@@ -315,15 +315,15 @@ if (req.isAuthenticated()){
   Secret.find(function(err, foundSecrets){
     if (foundSecrets){
       //console.log(foundSecrets)
-        res.send (foundSecrets);
+       return res.send (foundSecrets);
     }
   })
-// } else{
-  
- }
- res.cookie('connect.sid', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true, maxAge: 0});
+ } else{
+  res.cookie('connect.sid', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true, maxAge: 0});
  
     return res.send("unouthorized")
+ }
+ 
   })
 // app.post("/secrets", function (req, res) {
 

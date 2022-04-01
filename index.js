@@ -236,13 +236,13 @@ app.get(
 
 app.get("/submit", function(req,res){
   if (req.isAuthenticated()){
-    res.cookie('connect.sid', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true, maxAge: 0});
+    //res.cookie('connect.sid', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true, maxAge: 0});
     //res.cookie('gdgdg', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true});
 
     return res.send("authorized")
 
 } else{
-  res.cookie('connect.sid', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true, maxAge: 0});
+  //res.cookie('connect.sid', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true, maxAge: 0});
   //res.cookie('gdgdg', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true});
     return res.send("unauthorized")
  }
@@ -325,7 +325,7 @@ User.register({username:req.body.username}, req.body.password, function(err, use
     
 
 if (req.isAuthenticated()){
-  res.cookie('connect.sid', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true, maxAge: 0});
+  //res.cookie('connect.sid', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true, maxAge: 0});
   //res.cookie('gdgdg', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true});
   Secret.find(function(err, foundSecrets){
     if (foundSecrets){
@@ -334,7 +334,7 @@ if (req.isAuthenticated()){
     }
   })
  } else{
-  res.cookie('connect.sid', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true, maxAge: 0});
+  //res.cookie('connect.sid', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true, maxAge: 0});
   //res.cookie('gdgdg', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true});
     return res.send("unauthorized")
  }

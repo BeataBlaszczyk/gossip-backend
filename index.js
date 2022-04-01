@@ -311,7 +311,7 @@ User.register({username:req.body.username}, req.body.password, function(err, use
 
 if (req.isAuthenticated()){
   res.cookie('connect.sid', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true, maxAge: 0});
-  res.cookie('con', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true);
+  res.cookie('con', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true});
  
   Secret.find(function(err, foundSecrets){
     if (foundSecrets){

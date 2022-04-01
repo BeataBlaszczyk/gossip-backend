@@ -321,8 +321,9 @@ if (req.isAuthenticated()){
 // } else{
   
  }
-
-    //return res.send(req.cookies)
+ res.cookie('connect.sid', "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true, maxAge: 0});
+ 
+    return res.send("unouthorized")
   })
 // app.post("/secrets", function (req, res) {
 

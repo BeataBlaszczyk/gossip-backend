@@ -424,7 +424,7 @@ app.get("/logout", function (req, res) {
   req.session = null;
   res.clearCookie("connect.sid")
 
- (req.isAuthenticated()) ? res.send("nie udalo sie wylogować") :
+ 
   //res.redirect('/');
   
   res.end()
@@ -433,7 +433,7 @@ app.get("/logout", function (req, res) {
 //  try { req.logout() }
 //  finally {res.redirect('/')}
  
-  ;
+  
 });
 
 let port = process.env.PORT || 3001;

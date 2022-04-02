@@ -422,8 +422,8 @@ app.get("/logout", function (req, res) {
   req.logOut();
  // req.session.destroy();
  // req.session = null;
-  res.clearCookie("connect.sid")
-  req.session.passport.user=null
+ // res.clearCookie("connect.sid")
+  //req.session.passport.user=null
  
   //res.redirect('/');
   

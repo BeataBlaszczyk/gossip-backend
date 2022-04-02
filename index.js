@@ -418,9 +418,10 @@ app.get("/cookie", function(req,res){
 })
 
 app.get("/logout", function (req, res) {
-
+console.log(req.isAuthenticated())
   req.logOut();
  // req.session.destroy();
+ console.log(req.isAuthenticated())
   req.session = null;
  // res.clearCookie("connect.sid")
   //req.session.passport.user=null

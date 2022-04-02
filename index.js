@@ -421,7 +421,7 @@ app.get("/logout", function (req, res) {
 
   req.logout();
 
-  res.cookie("connect.sid", "", {maxAge: 0, hostOnly: false, path: "/", sameSite: "none", secure: true}); 
+  res.cookie("connect.sid", "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true}); 
  
 
  (req.isAuthenticated()) ? res.send("nie udalo sie wylogować") :

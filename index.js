@@ -415,7 +415,8 @@ app.get("/cookie", function(req,res){
 app.get("/logout", function (req, res) {
 
   req.logout();
-  res.redirect('/');
+  //res.redirect('/');
+  res.send("LOG OUT")
 //req.logout().then(res.redirect('/'))
 
 //  try { req.logout() }

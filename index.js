@@ -328,7 +328,7 @@ User.register({username:req.body.username}, req.body.password, function(err, use
   })
 
   app.get("/secrets", function(req,res){
-    //console.log("try secret)" + req.isAuthenticated())
+    console.log("try secret)" + req.isAuthenticated())
     //res.cookie('cookieName',randomNumber, { maxAge: 900000, httpOnly: true })
     //console.log(req.cookies.split('; '))
     

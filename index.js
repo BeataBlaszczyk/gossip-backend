@@ -275,10 +275,12 @@ app.get(
 
 app.get(
   "/auth/google/secrets",
-  passport.authenticate("google", { failureRedirect: "https://gossip-frontend.vercel.app/login" }),
+  passport.authenticate("google", { failureRedirect: "https://gossip-frontend.vercel.app/login",
+///successRedirect : "https://gossip-frontend.vercel.app/secrets" 
+}),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/secrets');
+    res.send('ok');
   }
 );
 

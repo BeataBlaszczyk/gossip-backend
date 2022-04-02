@@ -420,8 +420,8 @@ app.get("/cookie", function(req,res){
 app.get("/logout", function (req, res) {
 
   req.logOut();
-  req.session.destroy();
-  req.session = null;
+ // req.session.destroy();
+ // req.session = null;
   res.clearCookie("connect.sid")
   req.session.passport.user=null
  

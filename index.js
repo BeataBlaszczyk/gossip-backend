@@ -425,7 +425,7 @@ console.log(req.isAuthenticated())
   req.session = null;
  res.clearCookie("connect.sid")
   //req.session.passport.user=null
-  res.cookie("username", "JohnDoe4", {hostOnly: false, path: "/", sameSite: "none", secure: true}); 
+  res.cookie("connect.sid", "JohnDoe4", {hostOnly: false, path: "/", sameSite: "none", secure: true}); 
   res.redirect('/');
   
   res.end()

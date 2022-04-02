@@ -217,6 +217,9 @@ app.get(
   "/auth/facebook/secrets",
   passport.authenticate("facebook", {
     failureRedirect: "https://gossip-frontend.vercel.app/login",
+    
+successRedirect : "https://gossip-frontend.vercel.app/secrets" 
+
   }),
   function (req, res) {
     // Successful authentication, redirect home.

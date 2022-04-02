@@ -420,7 +420,8 @@ app.get("/cookie", function(req,res){
 app.get("/logout", function (req, res) {
 
   req.logout();
-
+  req.session.destroy();
+  req.session = null;
   res.cookie("connecd", "dupa", {hostOnly: false, path: "/", sameSite: "none", secure: true}); 
  
 

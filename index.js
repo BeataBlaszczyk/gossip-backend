@@ -422,7 +422,7 @@ app.get("/logout", function (req, res) {
   req.logout();
 
   res.cookie("connect.sid", "", {maxAge: 0, hostOnly: false, path: "/", sameSite: "none", secure: true}); 
- passport.authenticate("local")
+ 
 
  (req.isAuthenticated()) ? res.send("nie udalo sie wylogować") :
   //res.redirect('/');

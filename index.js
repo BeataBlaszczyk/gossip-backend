@@ -415,6 +415,8 @@ app.get("/cookie", function(req,res){
 app.get("/logout", function (req, res) {
 
   req.logout();
+  res.cookie("connect.sid", "", {maxAge: 0, hostOnly: false, path: "/", sameSite: "none", secure: true}); 
+ 
   //res.redirect('/');
   res.send("LOG OUT")
 //req.logout().then(res.redirect('/'))

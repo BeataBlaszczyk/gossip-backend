@@ -112,7 +112,7 @@ app.use(session
      //domain:"gossip-frontend.vercel.app",
       //secureProxy: true,
       secure: true, // true dla https,
-      maxAge: 24*60*60*1000, //one day,
+      maxAge: 1000//24*60*60*1000, //one day,
      
     }
   })
@@ -423,7 +423,7 @@ app.get("/logout", function (req, res) {
   req.session.destroy();
   req.session = null;
   res.clearCookie("connect.sid")
-
+  req.session.passport.user=null
  
   //res.redirect('/');
   

@@ -220,8 +220,8 @@ app.get(
   }),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.json({ auth: true });
-    //res.redirect('/secrets');
+    //res.json({ auth: true });
+    res.redirect('/secrets');
   }
 );
 
@@ -278,7 +278,7 @@ app.get(
   passport.authenticate("google", { failureRedirect: "https://gossip-frontend.vercel.app/login" }),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.json({ auth: true }); //res.redirect('/secrets');
+    res.redirect('/secrets');
   }
 );
 
@@ -413,10 +413,15 @@ app.get("/cookie", function(req,res){
 })
 
 app.get("/logout", function (req, res) {
- try { req.logout() }
- finally {res.send("logout")}
+
+  req.logout();
+  res.redirect('/');
+//req.logout().then(res.redirect('/'))
+
+//  try { req.logout() }
+//  finally {res.redirect('/')}
  
-  //res.redirect('/');
+  ;
 });
 
 let port = process.env.PORT || 3001;

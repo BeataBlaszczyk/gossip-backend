@@ -423,10 +423,10 @@ console.log(req.isAuthenticated())
  // req.session.destroy();
  console.log(req.isAuthenticated())
   req.session = null;
- // res.clearCookie("connect.sid")
+ res.clearCookie("connect.sid")
   //req.session.passport.user=null
  
-  //res.redirect('/');
+  res.redirect('/');
   
   res.end()
 //req.logout().then(res.redirect('/'))

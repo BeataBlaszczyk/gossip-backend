@@ -178,7 +178,7 @@ passport.use(
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
       callbackURL:
-        "https://desolate-forest-24784.herokuapp.com/auth/google/secrets",
+        "https://gossip-backend.vercel.app/auth/google/secrets",
       userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
       enableProof: true,
     },
@@ -196,7 +196,7 @@ passport.use(
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
       callbackURL:
-        "https://desolate-forest-24784.herokuapp.com/auth/facebook/secrets",
+        "https://gossip-backend.vercel.app/auth/facebook/secrets",
       enableProof: true,
     },
     function (accessToken, refreshToken, profile, cb) {
@@ -216,7 +216,7 @@ app.get(
 app.get(
   "/auth/facebook/secrets",
   passport.authenticate("facebook", {
-    failureRedirect: "http://localhost:3000/login",
+    failureRedirect: "https://gossip-frontend.vercel.app/login",
   }),
   function (req, res) {
     // Successful authentication, redirect home.
@@ -275,7 +275,7 @@ app.get(
 
 app.get(
   "/auth/google/secrets",
-  passport.authenticate("google", { failureRedirect: "/login" }),
+  passport.authenticate("google", { failureRedirect: "https://gossip-frontend.vercel.app/login" }),
   function (req, res) {
     // Successful authentication, redirect home.
     res.json({ auth: true }); //res.redirect('/secrets');

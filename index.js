@@ -19,6 +19,8 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const findOrCreate = require("mongoose-findorcreate");
 const { cookie } = require("express/lib/response");
+const http = require("http");
+const {Server} = require("socket.io");
 //const REDIS_PORT=6379;
 app.use(function (request, response, next) {
   response.header("Access-Control-Allow-Origin", "*");
@@ -85,8 +87,10 @@ res.header("Access-Control-Allow-Headers", "Origin, Set-Cookie, X-Requested-With
   next();
 });
 
+
+
 app.use(cors({
-  origin: "https://gossip-frontend.vercel.app",
+  origin: "http://localhost:3000",//"https://gossip-frontend.vercel.app",
   methods: "GET, POST, PUT, DELETE",
   credentials:true,
   allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token', 'set-cookie'],
@@ -127,6 +131,14 @@ app.use(
   })
 );
 
+const server = http.createServer(app);
+const io = new Server(server,{
+  cors:{
+      origin: 'http://localhost:3000',
+      mathods: ["GET", "POST"]
+  }
+})
+
 //mongodb+srv://admin-beata:<password>@cluster0.yu0at.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 //"mongodb+srv://admin-beata:mleczyk123@cluster0.yu0at.mongodb.net/todolistDB"
 mongoose.connect(
@@ -148,6 +160,22 @@ const secretSchema = new mongoose.Schema({
   rating: Number,
 });
 
+// const messageSchema = {
+//   room: String,
+//   author: String,
+//   message: String,
+//   time: String
+    
+// };
+
+
+const roomSchema = new mongoose.Schema({
+  roomName: String,
+  roomDescription: String,
+  discussion: Array,
+})
+
+
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
 
@@ -156,6 +184,7 @@ userSchema.plugin(findOrCreate);
 
 const User = new mongoose.model("User", userSchema);
 const Secret = new mongoose.model("Secret", secretSchema);
+const Room = new mongoose.model("Room", roomSchema);
 
 passport.use(User.createStrategy());
 //passport.serializeUser(User.serializeUser());
@@ -438,11 +467,65 @@ console.log(req.isAuthenticated())
 });
 
 let port = process.env.PORT || 3001;
-app.listen(port, function () {
-  console.log("Successfully started on port 3001. ");
-});
+// app.listen(port, function () {
+//   console.log("Successfully started on port. " + port);
+// });
+
+server.listen(port, () => console.log(`Listening on port ${port}`));
 
 app.get("/", function(req,res){
   //res.redirect("https://gossip-frontend.vercel.app")
   res.send("unsuccessed login ! buu")
+})
+
+
+app.post("/rooms", function(req, res){
+ // console.log("BU")
+//console.log(req.body)
+  const room = new Room({
+    roomName: req.body.roomName,
+    roomDescription: req.body.roomDescription,
+    discussion: []
+  });
+
+  room.save();
+  Room.update();
+  res.send("OK")
+
+})
+
+app.get("/getrooms", function(req,res){
+  Room.find(function(err, foundRooms){
+    
+      //console.log(foundSecrets)
+       return res.send (foundRooms)
+    
+  })
+})
+
+
+io.on("connection", (socket)=>{
+  console.log(`User connected: ${socket.id}`)
+
+
+      socket.on("add_room", (data)=>{
+        console.log("SOCKET")
+        console.log(data)
+        socket.emit("new_room", data)
+      }
+      )
+
+      socket.on("join_room", (data)=>{
+          socket.join(data);
+          console.log(`User with ID: ${socket.id} joined room: ${data}`)
+      })
+
+
+      socket.on("send_message", (data) =>{
+          socket.to(data.room).emit("receive_message", data)
+      } )
+
+  socket.on("disconnect", ()=>{
+      console.log("User disconnected", socket.id)
+  })
 })

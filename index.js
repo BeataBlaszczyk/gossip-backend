@@ -482,6 +482,7 @@ app.get("/", function(req,res){
 
 
 app.post("/rooms", function(req, res){
+  console.log(req.isAuthenticated())
  // console.log("BU")
 //console.log(req.body)
   const room = new Room({
@@ -497,6 +498,7 @@ app.post("/rooms", function(req, res){
 })
 
 app.get("/getrooms", function(req,res){
+  console.log(req.isAuthenticated())
   Room.find(function(err, foundRooms){
     
       //console.log(foundSecrets)

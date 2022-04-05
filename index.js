@@ -90,7 +90,7 @@ res.header("Access-Control-Allow-Headers", "Origin, Set-Cookie, X-Requested-With
 
 
 app.use(cors({
-  origin: "http://localhost:3000",//"https://gossip-frontend.vercel.app",
+  origin: "https://gossip-frontend.vercel.app",//"http://localhost:3000",//"https://gossip-frontend.vercel.app",
   methods: "GET, POST, PUT, DELETE",
   credentials:true,
   allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token', 'set-cookie'],
@@ -134,7 +134,7 @@ app.use(
 const server = http.createServer(app);
 const io = new Server(server,{
   cors:{
-      origin: 'http://localhost:3000',
+      origin: "https://gossip-frontend.vercel.app",
       mathods: ["GET", "POST"]
   }
 })
@@ -519,6 +519,11 @@ io.on("connection", (socket)=>{
           socket.join(data);
           console.log(`User with ID: ${socket.id} joined room: ${data}`)
       })
+
+      socket.on("leave_room", (data)=>{
+        socket.leave(data);
+        console.log(`User with ID: ${socket.id} left room: ${data}`)
+    })
 
 
       socket.on("send_message", (data) =>{

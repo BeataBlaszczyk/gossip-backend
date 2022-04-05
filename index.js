@@ -132,12 +132,12 @@ app.use(
 );
 
 const server = http.createServer(app);
-const io = new Server(server,{
-  cors:{
-      origin: "https://gossip-frontend.vercel.app",
-      mathods: ["GET", "POST"]
-  }
-})
+// const io = new Server(server,{
+//   cors:{
+//       origin: "https://gossip-frontend.vercel.app",
+//       mathods: ["GET", "POST"]
+//   }
+// })
 
 //mongodb+srv://admin-beata:<password>@cluster0.yu0at.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 //"mongodb+srv://admin-beata:mleczyk123@cluster0.yu0at.mongodb.net/todolistDB"
@@ -467,11 +467,11 @@ console.log(req.isAuthenticated())
 });
 
 let port = process.env.PORT || 3001;
-// app.listen(port, function () {
-//   console.log("Successfully started on port. " + port);
-// });
-
-server.listen(port, () => console.log(`Listening on port ${port}`));
+const ser= app.listen(port, function () {
+  console.log("Successfully started on port. " + port);
+});
+const io = require('socket.io').listen(ser);
+// server.listen(port, () => console.log(`Listening on port ${port}`));
 
 app.get("/", function(req,res){
   //res.redirect("https://gossip-frontend.vercel.app")

@@ -131,13 +131,15 @@ app.use(
   })
 );
 
-const server = http.createServer(app);
+/////////////////////////////////sock
+// const server = http.createServer(app);
 // const io = new Server(server,{
 //   cors:{
 //       origin: "https://gossip-frontend.vercel.app",
 //       mathods: ["GET", "POST"]
 //   }
 // })
+/////////////////////////////////////////
 
 //mongodb+srv://admin-beata:<password>@cluster0.yu0at.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 //"mongodb+srv://admin-beata:mleczyk123@cluster0.yu0at.mongodb.net/todolistDB"
@@ -467,10 +469,10 @@ console.log(req.isAuthenticated())
 });
 
 let port = process.env.PORT || 3001;
-const ser= app.listen(port, function () {
+app.listen(port, function () {
   console.log("Successfully started on port. " + port);
 });
-const io = require('socket.io').listen(ser);
+
 // server.listen(port, () => console.log(`Listening on port ${port}`));
 
 app.get("/", function(req,res){
@@ -504,33 +506,33 @@ app.get("/getrooms", function(req,res){
 })
 
 
-io.on("connection", (socket)=>{
-  console.log(`User connected: ${socket.id}`)
+// io.on("connection", (socket)=>{
+//   console.log(`User connected: ${socket.id}`)
 
 
-      socket.on("add_room", (data)=>{
-        console.log("SOCKET")
-        console.log(data)
-        socket.emit("new_room", data)
-      }
-      )
+//       socket.on("add_room", (data)=>{
+//         console.log("SOCKET")
+//         console.log(data)
+//         socket.emit("new_room", data)
+//       }
+//       )
 
-      socket.on("join_room", (data)=>{
-          socket.join(data);
-          console.log(`User with ID: ${socket.id} joined room: ${data}`)
-      })
+//       socket.on("join_room", (data)=>{
+//           socket.join(data);
+//           console.log(`User with ID: ${socket.id} joined room: ${data}`)
+//       })
 
-      socket.on("leave_room", (data)=>{
-        socket.leave(data);
-        console.log(`User with ID: ${socket.id} left room: ${data}`)
-    })
+//       socket.on("leave_room", (data)=>{
+//         socket.leave(data);
+//         console.log(`User with ID: ${socket.id} left room: ${data}`)
+//     })
 
 
-      socket.on("send_message", (data) =>{
-          socket.to(data.room).emit("receive_message", data)
-      } )
+//       socket.on("send_message", (data) =>{
+//           socket.to(data.room).emit("receive_message", data)
+//       } )
 
-  socket.on("disconnect", ()=>{
-      console.log("User disconnected", socket.id)
-  })
-})
+//   socket.on("disconnect", ()=>{
+//       console.log("User disconnected", socket.id)
+//   })
+// })

@@ -512,6 +512,7 @@ app.patch("/rating", function(req,res){
 
   console.log(req.body)
   console.log(JSON.parse(req.body))
+  res.end()
   //console.log(req.body.secret.id)
 })
 

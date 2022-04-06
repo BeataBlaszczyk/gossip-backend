@@ -509,8 +509,10 @@ app.get("/getrooms", function(req,res){
 })
 
 app.patch("/rating", function(req,res){
-  console.log(req.body.secret)
-  console.log(req.body.secret.id)
+
+  console.log(req.body)
+  console.log(JSON.parse(req.body))
+  //console.log(req.body.secret.id)
 })
 
 // io.on("connection", (socket)=>{

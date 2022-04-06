@@ -445,6 +445,7 @@ app.post('/login',
   });
 
 app.get("/cookie", function(req,res){
+  console.log(req.isAuthenticated())
   res.send(req.cookies["connect.sid"]);
 })
 
@@ -507,6 +508,10 @@ app.get("/getrooms", function(req,res){
   })
 })
 
+app.patch("/rating", function(req,res){
+  console.log(req.body.secret)
+  console.log(req.body.secret.id)
+})
 
 // io.on("connection", (socket)=>{
 //   console.log(`User connected: ${socket.id}`)

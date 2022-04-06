@@ -511,7 +511,9 @@ app.get("/getrooms", function(req,res){
 app.patch("/rating", function(req,res){
 
   console.log(req.body)
-  console.log(JSON.parse(req.body))
+  const secret=req.body.text()
+  console.log(secret)
+  console.log(secret._id)
   res.end()
   //console.log(req.body.secret.id)
 })

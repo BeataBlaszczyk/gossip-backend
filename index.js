@@ -510,14 +510,25 @@ app.get("/getrooms", function(req,res){
 
 app.patch("/rating", function(req,res){
 
-  console.log(req.body)
   const secret=req.body
-  console.log(secret)
   console.log(secret._id)
-  res.end()
+
+
+
+  Secret.findOneAndUpdate({_id: secret._id}, {rating: secret.rating}, function(err, foundSecrets){
+    
+    Secret.find(function(err, foundSecrets){
+      if (foundSecrets){
+        //console.log(foundSecrets)
+         return res.send (foundSecrets);
+      } 
+    })
+
+
+  
   //console.log(req.body.secret.id)
 })
-
+})
 // io.on("connection", (socket)=>{
 //   console.log(`User connected: ${socket.id}`)
 
